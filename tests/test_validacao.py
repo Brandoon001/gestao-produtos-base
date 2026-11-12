@@ -10,3 +10,12 @@ def campos_validos():
 
     campos.update(alteracoes)
     return campos
+
+@pytest.mark.parametrize("campo", "valor",
+  [
+    ("preco", "-50,00")
+    ("preco", "-0,00")
+    ("preco", "abc")
+  ],
+)
+
