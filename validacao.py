@@ -17,7 +17,7 @@ def validar_produto(campos: dict, ids_categoria_validos: set[int]):
 
     preco = None
     try:
-        preco = float(campos["preco"].strip().replace(",", "."))
+        preco = float(str(campos["preco"]).strip().replace(",", "."))
         if not math.isfinite(preco) or preco < 0:
             raise ValueError
     except ValueError:
@@ -25,7 +25,7 @@ def validar_produto(campos: dict, ids_categoria_validos: set[int]):
 
     estoque = None
     try:
-        estoque = int(campos["estoque"].strip())
+        estoque = int(str(campos["estoque"]).strip())
         if estoque < 0:
             raise ValueError
     except ValueError:
@@ -33,7 +33,7 @@ def validar_produto(campos: dict, ids_categoria_validos: set[int]):
 
     id_categoria = None
     try:
-        id_categoria = int(campos["id_categoria"])
+        id_categoria = int(str(campos["id_categoria"]).strip())
         if id_categoria not in ids_categoria_validos:
             raise ValueError
     except ValueError:
